@@ -1,0 +1,244 @@
+body {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.main-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding:0 20%;
+ 
+}.main-info .titulo{
+  color: #0A1D3B;
+  font-family: var(--font-display);
+  margin-top: 5rem ;
+  margin-bottom: 0;
+  text-align: center;
+}
+.main-info p{
+  font-size: 1.5rem;
+  text-align: justify;
+  padding: 1em 0;
+  text-align: center;
+  border-bottom: 0.5rem solid #F42E62;
+}
+span{
+  color: #F42E62;
+  font-family: var(--font-display);
+ font-weight: bold;
+}
+strong{
+  color: #446DB1;
+  font-family: var(--font-display);
+}
+.mesa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  max-width: 60rem;
+  margin: auto;
+}
+
+.tarjeta {
+  width: 10rem;
+  height: 10rem;
+  margin: 0.5rem;
+  border-radius: 0.3em;
+  background-image: var(--gradient);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.tarjeta__contenido {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: rotateY(-180deg) translateZ(1px);
+  backface-visibility: hidden;
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  padding-top: 0.4rem;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background-image: var(--gradient);
+  padding: 0.75rem 4rem;
+  border-radius: 5rem;
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+.barajarButton{
+
+  margin-right: 40%;
+  margin-left: 40%;
+  text-align: center;
+  margin-bottom: 5%;
+
+}
+
+.tarjeta__contenido::selection {
+  background: transparent;
+}
+
+.tarjeta.descubierta {
+  transform: rotateY(-180deg);
+}
+
+@keyframes error {
+  10%,
+  90% {
+    transform: rotateY(-180deg) translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: rotateY(-180deg) translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotateY(-180deg) translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: rotateY(-180deg) translateX(4px);
+  }
+}
+
+@keyframes acierto {
+  from {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  25% {
+    transform: rotateY(-180deg) scale3d(1.1, 1.1, 1.1);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotateY(-180deg) scale3d(1, 1, 1);
+    opacity: 0;
+  }
+}
+
+.acertada {
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+.acertada .tarjeta__contenido {
+  animation: acierto 1.3s ease-in-out forwards;
+}
+
+.error {
+  animation: error 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.sonido{
+
+  display: none;
+
+}
+.referendo,
+.plebiscito,
+.legislativa,
+.revocatorio,
+.cabildo,
+.end-game {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0,0,0,.5);
+  
+}
+.referendo.visible,
+.plebiscito.visible,
+.legislativa.visible,
+.revocatorio.visible,
+.cabildo.visible,
+.end-game.visible{
+  display: flex;
+}
+
+.modal {
+  background: white;
+  padding: 3rem 3rem 1rem;
+  margin: auto;
+  max-width: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  color: var(--orange);
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+.modal p {
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+.modal a {
+
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: sans-serif;
+  color: #0d6efd;;
+  text-decoration: none; 
+
+}
+
+.modal button {
+  margin: 2rem 0;
+}
+
+.modal .reiniciar {
+  color: var(--hotpink);
+  background: transparent;
+  border: 0;
+  text-transform: capitalize;
+  font-family: var(--font);
+  font-size: 1rem;
+  margin: 0;
+}
